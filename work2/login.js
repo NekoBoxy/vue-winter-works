@@ -5,7 +5,7 @@ const path = "catboxy";
 const app = {
   data() {
     return {
-      username: "catboxy@gmail.com",
+      username: "",
       password: "",
     };
   },
