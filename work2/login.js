@@ -36,7 +36,7 @@ const app = {
         .catch((error) => {
           // 登入失敗取錯誤訊息
           // console.dir(error);
-          const errorMessage = error.data.message;
+          const errorMessage = error.response.data.message;
           console.log("message:", errorMessage);
         });
     },
