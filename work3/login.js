@@ -1,5 +1,5 @@
 // 遠端伺服器位址與 API path
-const url = "https://vue3-course-api.hexschool.io/v2";
+const url = "https://vue3-course-api.hexschool.io";
 const path = "catboxy";
 
 const app = {
@@ -14,7 +14,7 @@ const app = {
     handleLogin() {
       axios({
         method: "post",
-        url: `${url}/admin/signin`,
+        url: `${url}/v2/admin/signin`,
         data: {
           username: this.username,
           password: this.password,
