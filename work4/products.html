@@ -65,7 +65,7 @@ LV3：完成 LV2＋串接圖片上傳 API 功能以及新增一個自訂欄位�
             </tr>
           </tbody>
         </table>
-        <b-pagination></b-pagination>
+        <b-pagination v-bind:total_pages="total_pages"></b-pagination>
       </div>
       <!-- Modal -->
       <div
@@ -240,11 +240,7 @@ LV3：完成 LV2＋串接圖片上傳 API 功能以及新增一個自訂欄位�
               </div>
             </div>
             <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-outline-secondary"
-                data-bs-dismiss="modal"
-              >
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                 取消
               </button>
               <button type="button" class="btn btn-primary" v-on:click="confirmProduct">確認</button>
@@ -292,14 +288,13 @@ LV3：完成 LV2＋串接圖片上傳 API 功能以及新增一個自訂欄位�
       </div>
       <!-- Modal -->
     </div>
-    <script type="text/x-template" id="pagination">
+    <script type="text/x-template" id="bPagination">
+      {{currentPage}}
       <nav aria-label="Page navigation example">
         <ul class="pagination">
-          <li class="page-item"><a class="page-link" href="#">上一頁</a></li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">下一頁</a></li>
+          <li v-on:click="previousPage" class="page-item"><a class="page-link" href="#">上一頁</a></li>
+          <li v-for="(pages,key) in total_pages" class="page-item"><a class="page-link" href="#">{{ pages }}</a></li>
+          <li v-on:click="nextPage" class="page-item"><a class="page-link" href="#">下一頁</a></li>
         </ul>
       </nav>
     </script>

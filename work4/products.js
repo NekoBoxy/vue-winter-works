@@ -1,9 +1,6 @@
 const url = "https://vue3-course-api.hexschool.io";
 const path = "catboxy";
-const hextoken = document.cookie.replace(
-  /(?:(?:^|.*;\s*)hextoken\s*=\s*([^;]*).*$)|^.*$/,
-  "$1"
-);
+const hextoken = document.cookie.replace(/(?:(?:^|.*;\s*)hextoken\s*=\s*([^;]*).*$)|^.*$/, "$1");
 axios.defaults.headers.common["Authorization"] = hextoken;
 // 建立 modal
 let productModal = null;
@@ -15,9 +12,9 @@ const app = {
   data() {
     return {
       products: [],
-      total_pages: 0,
       temp: {},
       status: "new",
+      total_pages: 0,
     };
   },
   components: {
@@ -29,7 +26,7 @@ const app = {
       axios
         .post(`${url}/v2/api/user/check`)
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
         })
         .catch((error) => {
           console.dir(error);
@@ -43,10 +40,12 @@ const app = {
         url: `${url}/v2/api/${path}/admin/products`,
       })
         .then((response) => {
-          const { products, pagination } = response.data;
+          const { products, pagination } = response.data; // 宣告 pagination
+          // const products = response.data.products;
+          // const pagination = response.data.pagination;
           this.products = products;
           this.total = products.length;
-          this.total_pages = pagination.total_pages;
+          this.total_pages = pagination.total_pages; // 將 pagination.total_pages 的值代入 total_pages
         })
         .catch((error) => {
           console.log(error.response.data.message);
