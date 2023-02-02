@@ -292,9 +292,9 @@ LV3：完成 LV2＋串接圖片上傳 API 功能以及新增一個自訂欄位�
       {{currentPage}}
       <nav aria-label="Page navigation example">
         <ul class="pagination">
-          <li v-on:click="previousPage" class="page-item"><a class="page-link" href="#">上一頁</a></li>
+          <li :class="{'page-item': true, disabled: currentPage == 1 }"><a class="page-link" href="#" v-on:click="previousPage">上一頁</a></li>
           <li v-for="(pages,key) in total_pages" class="page-item"><a class="page-link" href="#">{{ pages }}</a></li>
-          <li v-on:click="nextPage" class="page-item"><a class="page-link" href="#">下一頁</a></li>
+          <li class="page-item"><a class="page-link" href="#" v-on:click="nextPage">下一頁</a></li>
         </ul>
       </nav>
     </script>

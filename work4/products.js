@@ -15,6 +15,7 @@ const app = {
       temp: {},
       status: "new",
       total_pages: 0,
+      // current_page: 0,
     };
   },
   components: {
@@ -38,6 +39,9 @@ const app = {
       axios({
         method: "get",
         url: `${url}/v2/api/${path}/admin/products`,
+        data: {
+          page: this.current_page,
+        },
       })
         .then((response) => {
           const { products, pagination } = response.data; // 宣告 pagination
