@@ -1,3 +1,14 @@
 export const pagination = {
-  template:`#pagination`
+  props: {
+
+  },
+  data() {
+    return {
+
+    }
+  },
+  methods: {
+
+  },
+  template: `#pagination`
 };

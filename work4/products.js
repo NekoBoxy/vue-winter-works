@@ -1,12 +1,9 @@
-// 定義 url & path
 const url = "https://vue3-course-api.hexschool.io";
 const path = "catboxy";
-// 從 cookie 取 hextoken
 const hextoken = document.cookie.replace(
   /(?:(?:^|.*;\s*)hextoken\s*=\s*([^;]*).*$)|^.*$/,
   "$1"
 );
-// 用 hextoken 授權登入
 axios.defaults.headers.common["Authorization"] = hextoken;
 // 建立 modal
 let productModal = null;
@@ -54,43 +51,43 @@ const app = {
       this.temp = {};
     },
     // 編輯產品資料
-    editProduct(temp){
+    editProduct(temp) {
       this.status = "edit";
       this.temp = JSON.parse(JSON.stringify(temp));
     },
     // 刪除產品資料
-    delProductModal(temp){
+    delProductModal(temp) {
       this.temp = temp;
     },
     // 新增圖片：若 temp 內沒有 imagesUrl，則新增一個 imagesUrl 欄位，之後 push 一個空字串進去，v-for 才能正常執行。
-    addImage(){
-      if(!this.temp.imagesUrl){
+    addImage() {
+      if (!this.temp.imagesUrl) {
         this.temp.imagesUrl = [];
       }
       this.temp.imagesUrl.push("");
     },
     // 刪除圖片：用 splice 與 v-for 的 key 搭配，刪除一筆資料。
-    removeImage(key){
-      this.temp.imagesUrl.splice(key,1);
+    removeImage(key) {
+      this.temp.imagesUrl.splice(key, 1);
     },
     confirmProduct() {
       let method = "";
       let apiUrl = "";
-      if(this.status == "new") {
+      if (this.status == "new") {
         method = "post";
         apiUrl = `${url}/v2/api/${path}/admin/product`;
       } else {
         method = "put";
         apiUrl = `${url}/v2/api/${path}/admin/product/${this.temp.id}`;
       }
-      axios[method](apiUrl,{data: this.temp})
-      .then(() => {
-        productModal.hide();
-        this.getProducts();
-      })
-      .catch((error) => {
-        alert(error.response.data.message);
-      });
+      axios[method](apiUrl, { data: this.temp })
+        .then(() => {
+          productModal.hide();
+          this.getProducts();
+        })
+        .catch((error) => {
+          alert(error.response.data.message);
+        });
     },
     // 確認刪除資料
     confirmDelete() {
