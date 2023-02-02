@@ -9,6 +9,8 @@ axios.defaults.headers.common["Authorization"] = hextoken;
 let productModal = null;
 let delProductModal = null;
 
+import { bPagination } from "./components/bPagination.js";
+
 const app = {
   data() {
     return {
@@ -16,6 +18,9 @@ const app = {
       temp: {},
       status: "new",
     };
+  },
+  components: {
+    "b-pagination": bPagination,
   },
   methods: {
     // 確認是否登入，登入失敗則跳轉至 login.html

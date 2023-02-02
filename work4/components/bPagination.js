@@ -1,4 +1,4 @@
-export const pagination = {
+export const bPagination = {
   props: {
 
   },
