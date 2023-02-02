@@ -15,6 +15,7 @@ const app = {
   data() {
     return {
       products: [],
+      total_pages: 0,
       temp: {},
       status: "new",
     };
@@ -42,9 +43,10 @@ const app = {
         url: `${url}/v2/api/${path}/admin/products`,
       })
         .then((response) => {
-          const { products } = response.data;
+          const { products, pagination } = response.data;
           this.products = products;
           this.total = products.length;
+          this.total_pages = pagination.total_pages;
         })
         .catch((error) => {
           console.log(error.response.data.message);
