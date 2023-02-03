@@ -25,7 +25,6 @@ const app = {
   methods: {
     // 將 pagination 與 div="app" 連接起來
     chain(page) {
-      // console.log("")
       this.getProducts(page);
     },
     // 確認是否登入，登入失敗則跳轉至 login.html
@@ -42,12 +41,11 @@ const app = {
     },
     // 取得遠端產品資料
     getProducts(page) {
-
       axios({
         method: "get",
         url: `${url}/v2/api/${path}/admin/products`,
         params: {
-          page: page || this.current_page,
+          page: page || this.current_page, // 參數 page 若無值，代入 this.current_page
         },
       })
         .then((response) => {
