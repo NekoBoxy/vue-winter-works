@@ -15,7 +15,6 @@ const app = {
       temp: {},
       status: "new",
       total_pages: 0,
-      // current_page: 0,
     };
   },
   components: {
