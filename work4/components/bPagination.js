@@ -13,7 +13,6 @@ export const bPagination = {
       this.currentPage = this.currentPage - 1;
     },
     handleCurrentPage(page) {
-      console.log(page);
       this.currentPage = page;
     },
     handleNextPage() {

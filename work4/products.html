@@ -298,7 +298,7 @@ LV3：完成 LV2＋串接圖片上傳 API 功能以及新增一個自訂欄位�
               上一頁
             </a>
           </li>
-          <li :class="{'page-item': true, avtived: currentPage == page}" v-for="(page,key) in total_pages">
+          <li :class="{'page-item': true, active: currentPage == page}" v-for="(page,key) in total_pages">
             <a class="page-link" href="#" v-on:click="handleCurrentPage(page)">
               {{ page }}
             </a>
