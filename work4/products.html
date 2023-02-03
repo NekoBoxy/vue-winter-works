@@ -65,7 +65,8 @@ LV3：完成 LV2＋串接圖片上傳 API 功能以及新增一個自訂欄位�
             </tr>
           </tbody>
         </table>
-        <b-pagination v-bind:total_pages="total_pages"></b-pagination>
+        <b-pagination v-bind:total_pages="total_pages" v-on:on_page="chain"></b-pagination>
+        <!-- <b-pagination v-bind:total_pages="total_pages" v-on:on_page="hjbgnhuffv"></b-pagination> -->
       </div>
       <!-- Modal -->
       <div

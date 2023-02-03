@@ -14,13 +14,20 @@ const app = {
       products: [],
       temp: {},
       status: "new",
+      // 資料由後端來，所以變數名稱取的跟後端相同
       total_pages: 0,
+      current_page: 1,
     };
   },
   components: {
     "b-pagination": bPagination,
   },
   methods: {
+    // 將 pagination 與 div="app" 連接起來
+    chain(page) {
+      // console.log("")
+      this.getProducts(page);
+    },
     // 確認是否登入，登入失敗則跳轉至 login.html
     checkLogin() {
       axios
@@ -34,12 +41,13 @@ const app = {
         });
     },
     // 取得遠端產品資料
-    getProducts() {
+    getProducts(page) {
+
       axios({
         method: "get",
         url: `${url}/v2/api/${path}/admin/products`,
-        data: {
-          page: this.current_page,
+        params: {
+          page: page || this.current_page,
         },
       })
         .then((response) => {
@@ -49,6 +57,7 @@ const app = {
           this.products = products;
           this.total = products.length;
           this.total_pages = pagination.total_pages; // 將 pagination.total_pages 的值代入 total_pages
+          this.current_page = pagination.current_page;
         })
         .catch((error) => {
           console.log(error.response.data.message);
