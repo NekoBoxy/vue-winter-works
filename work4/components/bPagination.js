@@ -9,14 +9,14 @@ export const bPagination = {
     }
   },
   methods: {
-    previousPage() {
+    handlePrePage() {
       this.currentPage = this.currentPage - 1;
     },
-    CurrentPage(page) {
-      console.log(page)
-      // this.currentPage = page;
+    handleCurrentPage(page) {
+      console.log(page);
+      this.currentPage = page;
     },
-    nextPage() {
+    handleNextPage() {
       this.currentPage = this.currentPage + 1;
     },
   },
