@@ -108,88 +108,89 @@
             </tfoot>
           </table> -->
         </div>
+
         <div class="my-5 row justify-content-center">
-          <v-form ref="form" class="col-md-6" v-slot="{ errors }" >
+          <v-form v-on:submit="handleSubmit" ref="form" class="col-md-6" v-slot="{ errors }" >
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
-              <v-field
-              id="email" name="email" type="email" class="form-control"
-              :class="{ 'is-invalid': errors['email'] }" placeholder="請輸入 Email">
+              <v-field id="email" name="email" type="email" class="form-control" placeholder="請輸入 Email"
+              :class="{ 'is-invalid': errors['email'] }" rules="email|required">
               </v-field>
               <error-message name="email" class="invalid-feedback"></error-message>
             </div>
 
             <div class="mb-3">
               <label for="name" class="form-label">收件人姓名</label>
-              <v-field id="name" name="姓名" type="text" class="form-control" 
-              :class="{ 'is-invalid': errors['姓名'] }" placeholder="請輸入姓名" rules="required">
+              <v-field id="name" name="name" type="text" class="form-control" placeholder="請輸入姓名"
+              :class="{ 'is-invalid': errors['name'] }" rules="required">
               </v-field>
-              <error-message name="姓名" class="invalid-feedback"></error-message>
+              <error-message name="name" class="invalid-feedback"></error-message>
             </div>
-
             <div class="mb-3">
-              <label for="tel" class="form-label">收件人電話</label>
-              <v-field id="tel" name="電話" type="text" class="form-control"
-              :class="{ 'is-invalid': errors['電話'] }" placeholder="請輸入電話" >
+              <label for="mobilePhone" class="form-label">收件人手機號碼</label>
+              <v-field id="mobilePhone" name="mobilePhone" type="text" class="form-control" placeholder="請輸入手機號碼"
+              :class="{ 'is-invalid': errors['mobilePhone'] }" v-bind:rules="checkMobilePhone">
               </v-field>
-              <error-message name="電話" class="invalid-feedback"></error-message>
+              <error-message name="mobilePhone" class="invalid-feedback"></error-message>
             </div>
-
+            
             <div class="mb-3">
               <label for="address" class="form-label">收件人地址</label>
-              <v-field id="address" name="地址" type="text" class="form-control"
-              :class="{ 'is-invalid': errors['地址'] }" placeholder="請輸入地址" rules="required" >
+              <v-field id="address" name="address" type="text" class="form-control" placeholder="請輸入地址"
+              :class="{ 'is-invalid': errors['address'] }" rules="required" >
               </v-field>
-              <error-message name="地址" class="invalid-feedback"></error-message>
+              <error-message name="address" class="invalid-feedback"></error-message>
             </div>
 
             <div class="mb-3">
               <label for="message" class="form-label">留言</label>
-              <textarea id="message" class="form-control" cols="30" rows="10" ></textarea>
+              <v-field id="message" name="message" class="form-control" cols="30" rows="10" rules="required" as="textarea"></v-field>
             </div>
+
             <div class="text-end">
-              <button type="submit" class="btn btn-danger"
-                      >送出訂單</button>
+              <button type="submit" class="btn btn-danger">
+                送出訂單
+              </button>
             </div>
           </v-form>
+
         </div>
       </div>
     </div>
     <script type="text/x-template" id="userProductModal">
-<div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" ref="modal">
-  <div class="modal-dialog modal-xl" role="document">
-    <div class="modal-content border-0">
-      <div class="modal-header bg-dark text-white">
-        <h5 class="modal-title" id="exampleModalLabel">
-          <span>{{  }}</span>
-      </h5>
-        <button type="button" class="btn-close"
-                data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-sm-6">
-            <img class="img-fluid" :src="..." alt="">
-      </div>
-          <div class="col-sm-6">
-            <span class="badge bg-primary rounded-pill">{{  }}</span>
-            <p>商品描述：{{  }}</p>
-            <p>商品內容：{{  }}</p>
-            <div class="h5">{{  }} 元</div>
-            <del class="h6">原價 {{ }} 元</del>
-            <div class="h5">現在只要 {{  }} 元</div>
-            <div>
-              <div class="input-group">
-                <input type="number" class="form-control" min="1">
-                <button type="button" class="btn btn-primary">加入購物車</button>
-      </div>
-      </div>
-      </div>
-          <!-- col-sm-6 end -->
-      </div>
-      </div>
-      </div>
-      </div>
+      <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" ref="modal">
+        <div class="modal-dialog modal-xl" role="document">
+          <div class="modal-content border-0">
+            <div class="modal-header bg-dark text-white">
+              <h5 class="modal-title" id="exampleModalLabel">
+                <span>{{  }}</span>
+              </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-sm-6">
+                  <img class="img-fluid" :src="..." alt="">
+                </div>
+                <div class="col-sm-6">
+                  <span class="badge bg-primary rounded-pill">{{  }}</span>
+                    <p>商品描述：{{  }}</p>
+                    <p>商品內容：{{  }}</p>
+                    <div class="h5">{{  }} 元</div>
+                    <del class="h6">原價 {{ }} 元</del>
+                    <div class="h5">現在只要 {{  }} 元</div>
+                  <div>
+                    <div class="input-group">
+                      <input type="number" class="form-control" min="1">
+                      <button type="button" class="btn btn-primary">加入購物車</button>
+                    </div>
+                  </div>
+                </div><!-- col-sm-6 end -->
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </script>
 

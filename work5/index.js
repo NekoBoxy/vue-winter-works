@@ -1,5 +1,5 @@
-const url = "https://vue3-course-api.hexschool.io";
-const path = "catboxy";
+const BASE_URL = "https://vue3-course-api.hexschool.io";
+const api_path = "catboxy";
 
 // 載入全部規則
 Object.keys(VeeValidateRules).forEach(rule => {
@@ -34,7 +34,7 @@ const app = {
     getProducts() {
       axios({
         method: "get",
-        url: `${url}/v2/api/${path}/admin/products`,
+        url: `${BASE_URL}/v2/api/${api_path}/products/all`,
       })
         .then((response) => {
           const { products } = response.data;
@@ -44,6 +44,16 @@ const app = {
           console.log(error.response.data.message);
         });
     },
+    checkMobilePhone(value) {
+      const mobilePhone = /^09[0-9]{8}$/ // 正規表達式
+      return mobilePhone.test(value) ? true : '需要正確的電話號碼'
+    },
+    handleSubmit(values) {
+      console.log(values);
+    },
+  },
+  mounted() {
+
   },
 };
 
