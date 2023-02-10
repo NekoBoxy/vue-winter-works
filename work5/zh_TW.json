@@ -1,0 +1,30 @@
+{
+  "code": "zh_TW",
+  "messages": {
+    "alpha": "此欄位 須以英文組成",
+    "alpha_dash": "此欄位 須以英數、斜線及底線組成",
+    "alpha_num": "此欄位 須以英數組成",
+    "alpha_spaces": "此欄位 須以英文及空格組成",
+    "between": "此欄位 須介於 0:{min} 至 1:{max}之間",
+    "confirmed": " 此欄位 不一致",
+    "digits": "此欄位 須為 0:{length} 位數字",
+    "dimensions": "此欄位 圖片尺寸不正確。須為 0:{width} x 1:{height} 像素",
+    "email": "此欄位 須為有效的電子信箱",
+    "excluded": "此欄位 的選項無效",
+    "ext": "此欄位 須為有效的檔案",
+    "image": "此欄位 須為圖片",
+    "one_of": "此欄位 的選項無效",
+    "integer": "此欄位 須為整數",
+    "length": "此欄位 的長度須為 0:{length}",
+    "max": "此欄位 不能大於 0:{length} 個字元",
+    "max_value": "此欄位 不得大於 0:{max}",
+    "mimes": "此欄位 須為有效的檔案類型",
+    "min": "此欄位 不能小於 0:{length} 個字元",
+    "min_value": "此欄位 不得小於 0:{min}",
+    "numeric": "此欄位 須為數字",
+    "regex": "此欄位 的格式錯誤",
+    "required": "此欄位 為必填",
+    "required_if": "此欄位 為必填",
+    "size": "此欄位 的檔案須小於 0:{size}KB"
+  }
+}
